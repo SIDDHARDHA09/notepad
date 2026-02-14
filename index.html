@@ -12,14 +12,18 @@
                 extend: {
                     colors: {
                         brand: {
-                            50: '#eef2ff',
-                            100: '#e0e7ff',
-                            200: '#c7d2fe',
-                            300: '#a5b4fc',
-                            400: '#818cf8',
-                            500: '#6366f1',
-                            600: '#4f46e5',
-                            700: '#4338ca',
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            200: '#e2e8f0',
+                            300: '#cbd5e1',
+                            400: '#94a3b8',
+                            500: '#334155', // Deep Slate
+                            600: '#1e293b',
+                            700: '#0f172a',
+                        },
+                        accent: {
+                            500: '#64748b', // Muted Slate Accent
+                            600: '#475569',
                         }
                     },
                     fontFamily: {
@@ -32,9 +36,10 @@
                         jetbrains: ['JetBrains Mono', 'monospace'],
                     },
                     boxShadow: {
-                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
-                        'premium': '0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02)',
-                        'glow': '0 0 20px rgba(99, 102, 241, 0.15)',
+                        'glass': '0 8px 32px 0 rgba(51, 65, 85, 0.04)',
+                        'premium': '0 20px 25px -5px rgba(0, 0, 0, 0.02), 0 10px 10px -5px rgba(0, 0, 0, 0.01)',
+                        'glow': '0 0 25px rgba(51, 65, 85, 0.15)',
+                        'accent-glow': '0 0 25px rgba(100, 116, 139, 0.15)',
                     }
                 },
             },
@@ -45,17 +50,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&family=Lora:wght@400;700&family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;700&family=Playfair+Display:wght@400;700;900&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-mesh-light: radial-gradient(at 0% 0%, hsla(225,39%,90%,1) 0, transparent 50%), 
-                             radial-gradient(at 50% 0%, hsla(225,39%,95%,1) 0, transparent 50%), 
-                             radial-gradient(at 100% 0%, hsla(225,39%,90%,1) 0, transparent 50%);
-            --bg-mesh-dark: radial-gradient(at 0% 0%, hsla(230,30%,10%,1) 0, transparent 50%), 
-                            radial-gradient(at 50% 0%, hsla(230,30%,15%,1) 0, transparent 50%), 
-                            radial-gradient(at 100% 0%, hsla(230,30%,10%,1) 0, transparent 50%);
+            --bg-mesh-light: radial-gradient(at 0% 0%, hsla(215, 25%, 98%, 1) 0, transparent 50%), 
+                             radial-gradient(at 50% 0%, hsla(220, 20%, 96%, 1) 0, transparent 50%), 
+                             radial-gradient(at 100% 0%, hsla(215, 25%, 98%, 1) 0, transparent 50%);
+            --bg-mesh-dark: radial-gradient(at 0% 0%, hsla(215, 20%, 5%, 1) 0, transparent 50%), 
+                            radial-gradient(at 50% 0%, hsla(220, 15%, 7%, 1) 0, transparent 50%), 
+                            radial-gradient(at 100% 0%, hsla(215, 20%, 5%, 1) 0, transparent 50%);
         }
         body {
             font-family: 'Inter', sans-serif;
             background-attachment: fixed;
-            @apply transition-colors duration-500 bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100;
+            @apply transition-colors duration-500 bg-white dark:bg-stone-950 text-slate-900 dark:text-stone-100;
         }
         .light body { background-image: var(--bg-mesh-light); }
         .dark body { background-image: var(--bg-mesh-dark); }
@@ -63,15 +68,15 @@
         .custom-scrollbar::-webkit-scrollbar { width: 6px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
         .custom-scrollbar::-webkit-scrollbar-thumb {
-            @apply bg-slate-200 dark:bg-slate-800 rounded-full hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors;
+            @apply bg-slate-200 dark:bg-stone-800 rounded-full hover:bg-slate-300 dark:hover:bg-stone-700 transition-colors;
         }
 
         .glass-panel {
-            @apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-3xl border border-white/20 dark:border-slate-800/30 shadow-glass;
+            @apply bg-white/80 dark:bg-stone-900/80 backdrop-blur-3xl border border-slate-100/30 dark:border-stone-800/30 shadow-glass;
         }
 
         .premium-card {
-            @apply bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800/50 shadow-sm hover:shadow-premium hover:-translate-y-1.5 transition-all duration-500;
+            @apply bg-white dark:bg-stone-900 border border-slate-100 dark:border-stone-800/50 shadow-sm hover:shadow-premium hover:-translate-y-1 transition-all duration-500;
         }
 
         .no-scrollbar::-webkit-scrollbar { display: none; }
@@ -79,13 +84,13 @@
 
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-10px); }
             100% { transform: translateY(0px); }
         }
         .float-animation { animation: float 6s ease-in-out infinite; }
 
         .editor-image {
-            @apply rounded-[2rem] shadow-2xl my-8 mx-auto transition-transform duration-500 hover:scale-[1.02];
+            @apply rounded-[2.5rem] shadow-2xl my-10 mx-auto transition-transform duration-700 hover:scale-[1.01];
         }
     </style>
 <script type="importmap">
