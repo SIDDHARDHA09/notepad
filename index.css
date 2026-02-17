@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-mesh-light: radial-gradient(at 0% 0%, hsla(215, 25%, 98%, 1) 0, transparent 50%), 
+                   radial-gradient(at 50% 0%, hsla(220, 20%, 96%, 1) 0, transparent 50%), 
+                   radial-gradient(at 100% 0%, hsla(215, 25%, 98%, 1) 0, transparent 50%);
+  --bg-mesh-dark: radial-gradient(at 0% 0%, hsla(215, 20%, 5%, 1) 0, transparent 50%), 
+                  radial-gradient(at 50% 0%, hsla(220, 15%, 7%, 1) 0, transparent 50%), 
+                  radial-gradient(at 100% 0%, hsla(215, 20%, 5%, 1) 0, transparent 50%);
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-white dark:bg-stone-950 text-slate-900 dark:text-stone-100 transition-colors duration-500;
+    background-attachment: fixed;
+  }
+  
+  .light body { background-image: var(--bg-mesh-light); }
+  .dark body { background-image: var(--bg-mesh-dark); }
+}
+
+@layer components {
+  .custom-scrollbar::-webkit-scrollbar { 
+    width: 6px; 
+  }
+  .custom-scrollbar::-webkit-scrollbar-track { 
+    background: transparent; 
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-slate-200 dark:bg-stone-800 rounded-full hover:bg-slate-300 dark:hover:bg-stone-700 transition-colors;
+  }
+
+  .glass-panel {
+    @apply bg-white/80 dark:bg-stone-900/80 backdrop-blur-3xl border border-slate-100/30 dark:border-stone-800/30 shadow-glass;
+  }
+
+  .premium-card {
+    @apply bg-white dark:bg-stone-900 border border-slate-100 dark:border-stone-800/50 shadow-sm hover:shadow-premium hover:-translate-y-1 transition-all duration-500;
+  }
+
+  .editor-image {
+    @apply rounded-[2.5rem] shadow-2xl my-10 mx-auto transition-transform duration-700 hover:scale-[1.01];
+  }
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
